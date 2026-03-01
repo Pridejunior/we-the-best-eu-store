@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shop | WE THE BEST EU STORE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">WE THE BEST EU</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+        <a href="dashboard.html">Account</a>
+    </nav>
+</header>
+
+<section class="section">
+    <h2 class="section-title">Our Collection</h2>
+
+    <div class="product-grid">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1520975922284-8b456906c813?q=80&w=1000">
+            <h3>Premium Jacket</h3>
+            <p>€149</p>
+            <button onclick="addToCart('Premium Jacket',149)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000">
+            <h3>Luxury Sneakers</h3>
+            <p>€179</p>
+            <button onclick="addToCart('Luxury Sneakers',179)">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h3>Login</h3>
+      <input type="email" id="loginEmail" placeholder="Email">
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
