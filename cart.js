@@ -73,12 +73,14 @@ function applyCoupon() {
     renderCart();
 }
 
-function checkout() {
-    alert("Order placed successfully!");
-    localStorage.removeItem("cart");
-    location.reload();
-}
+function checkout(){
+  if(cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
 
+  window.location.href = "checkout.html";
+}
 renderCart();
 
 fetch('product.json')
