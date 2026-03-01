@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Checkout</title>
+
+<script src="https://js.stripe.com/v3/"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= CLEAN LUXURY CHECKOUT ================= */
+
+:root{
+  --gold:#D4AF37;
+  --black:#111;
+  --soft-bg:#f9f9f9;
+  --border:#e8e8e8;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--soft-bg);
+  color:var(--black);
+}
+
+/* Layout */
+.checkout-wrapper{
+  max-width:1200px;
+  margin:60px auto;
+  display:flex;
+  gap:50px;
+  padding:0 30px;
+  flex-wrap:wrap;
+}
+
+/* LEFT - FORM */
+.checkout-form{
+  flex:1 1 600px;
+  background:white;
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.06);
+}
+
+.checkout-form h2{
+  margin-top:0;
+  margin-bottom:25px;
+  font-weight:600;
+}
+
+/* Inputs */
+.checkout-form input{
+  width:100%;
+  padding:15px;
+  margin-bottom:18px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  font-size:14px;
+  transition:0.3s;
+}
+
+.checkout-form input:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 8px rgba(212,175,55,0.2);
+  outline:none;
+}
+
+/* Stripe Card */
+#card-element{
+  padding:15px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  margin-bottom:25px;
+}
+
+/* Pay Button */
+.pay-btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:50px;
+  background:var(--gold);
+  color:white;
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.pay-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(212,175,55,0.35);
+}
+
+/* RIGHT - SUMMARY */
+.checkout-summary{
+  flex:1 1 350px;
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.06);
+  height:fit-content;
+  position:sticky;
+  top:40px;
+}
+
+.checkout-summary h3{
+  margin-top:0;
+  font-weight:600;
+}
+
+/* Order list */
+.order-item{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  font-size:14px;
+}
+
+.total-line{
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+  font-size:20px;
+  font-weight:700;
+  color:var(--gold);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .checkout-wrapper{
+    flex-direction:column;
+  }
+  .checkout-summary{
+    position:static;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="checkout-wrapper">
+
+  <!-- FORM -->
+  <div class="checkout-form">
+    <h2>Billing Information</h2>
+
+    <form id="payment-form">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="text" id="address" placeholder="Street Address" required>
+      <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="country" placeholder="Country" required>
+
+      <h2>Payment Details</h2>
+      <div id="card-element"></div>
+
+      <button type="submit" class="pay-btn">
+        Complete Payment
+      </button>
+    </form>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="checkout-summary">
+    <h3>Your Order</h3>
+    <div id="orderList"></div>
+
+    <div class="total-line">
+      <span>Total</span>
+      <span>$<span id="checkoutTotal">0</span></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+/* ================= LOAD CART ================= */
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const orderList = document.getElementById("orderList");
+const totalSpan = document.getElementById("checkoutTotal");
+
+let total = 0;
+
+cart.forEach(item=>{
+  const itemTotal = item.price * item.quantity;
+  total += itemTotal;
+
+  orderList.innerHTML += `
+    <div class="order-item">
+      <span>${item.name} × ${item.quantity}</span>
+      <span>$${itemTotal.toFixed(2)}</span>
+    </div>
+  `;
+});
+
+totalSpan.innerText = total.toFixed(2);
+
+
+/* ================= STRIPE ================= */
+
+const stripe = Stripe("pk_test_YOUR_PUBLIC_KEY");
+const elements = stripe.elements();
+const card = elements.create("card");
+card.mount("#card-element");
+
+document.getElementById("payment-form")
+.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+
+  const {error} = await stripe.createPaymentMethod({
+    type:"card",
+    card:card
+  });
+
+  if(error){
+    alert(error.message);
+  } else {
+    alert("Payment method created. Connect backend to complete payment.");
+  }
+});
+
+</script>
+
+</body>
+</html>
