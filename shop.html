@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | WE THE BEST EU STORE</title>
+  <link rel="stylesheet" href="stylecart.css">
+  <!-- Font Awesome for cart icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="main-header">
+  <h2>Luxury Store</h2>
+  <!-- Optional header right section -->
+</header>
+
+<!-- Search + Filters + Cart Icon -->
+<div class="filters">
+  <input type="text" id="searchInput" placeholder="Search products..." />
+
+  <select id="categoryFilter"></select>
+  <select id="brandFilter"></select>
+  <select id="colorFilter"></select>
+  <select id="luxuryFilter">
+    <option value="">Luxury?</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
+  <select id="newFilter">
+    <option value="">New?</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
+
+  <div class="cart-icon" onclick="toggleMiniCart(true)">
+    <i class="fa fa-shopping-cart"></i>
+    <span id="cartCount">0</span>
+  </div>
+</div>
+
+<!-- Products Grid -->
+<div id="products" class="products-grid"></div>
+
+<!-- Pagination -->
+<div id="pagination" class="pagination"></div>
+
+<!-- Mini Cart -->
+<div class="mini-cart" id="miniCart">
+  <div class="mini-cart-header">
+    <h3>Your Cart</h3>
+    <span class="close-btn" onclick="toggleMiniCart(false)">✖</span>
+  </div>
+  <div id="miniCartItems"></div>
+  <h4>Total: $<span id="miniTotal">0</span></h4>
+  <button onclick="goToCheckout()">Checkout</button>
+</div>
+
+<!-- Scripts -->
+<script src="shop.js"></script>
+
+</body>
+</html>
