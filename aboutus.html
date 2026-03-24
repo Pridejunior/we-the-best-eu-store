@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | WE THE BEST EU STORE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+:root{
+  --gold:#D4AF37;
+  --black:#111111;
+  --soft:#f5f5f5;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:var(--black);
+  background:white;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+  height:80vh;
+  background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1523275335684-37898b6baf30') center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:48px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:800px;
+  font-weight:300;
+  line-height:1.7;
+}
+
+/* ================= SECTION GENERIC ================= */
+
+.section{
+  padding:100px 10%;
+}
+
+.section-light{
+  background:var(--soft);
+}
+
+.section h2{
+  font-size:36px;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.section h2::after{
+  content:"";
+  width:80px;
+  height:3px;
+  background:var(--gold);
+  display:block;
+  margin-top:10px;
+}
+
+/* ================= STORY GRID ================= */
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.grid-2 img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.section p{
+  line-height:1.8;
+  font-weight:300;
+}
+
+/* ================= VALUES ================= */
+
+.values{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  margin-top:50px;
+}
+
+.value-card{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.value-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.value-card h3{
+  margin-top:0;
+  color:var(--gold);
+}
+
+/* ================= TEAM ================= */
+
+.team{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  margin-top:60px;
+}
+
+.team-member{
+  text-align:center;
+}
+
+.team-member img{
+  width:200px;
+  height:200px;
+  object-fit:cover;
+  border-radius:50%;
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+  margin-bottom:20px;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+  background:var(--black);
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta h2{
+  margin-bottom:20px;
+}
+
+.cta button{
+  padding:15px 40px;
+  border-radius:50px;
+  border:none;
+  background:var(--gold);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.cta button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(212,175,55,0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+}
+ <style>
+    
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #eee;
+  z-index:1000;
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:80px;
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  letter-spacing:3px;
+  font-weight:700;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  gap:40px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--black);
+  font-size:0.9rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <div class="logo">WE THE BEST <span>EU</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="aboutus.html">About us</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+      <li><a href="aboutus.html">About us</a></li>
+      <li><a href="cart.html">🛒 cart</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- HERO -->
+<section class="hero">
+  <h1>WE THE BEST EU STORE</h1>
+  <p>
+    Redefining European luxury commerce through excellence, innovation, and uncompromising quality. 
+    We are more than a store — we are a statement of prestige.
+  </p>
+</section>
+
+<!-- OUR STORY -->
+<section class="section">
+  <h2>Our Story</h2>
+  <div class="grid-2">
+    <div>
+      <p>
+        Founded with a bold vision to redefine the European luxury retail experience, 
+        WE THE BEST EU STORE was established to bridge craftsmanship, innovation, and accessibility.
+      </p>
+      <p>
+        Our journey began with a simple yet powerful belief: excellence should not be ordinary — 
+        it should be exceptional. From curated luxury watches to premium lifestyle products, 
+        we carefully select only what reflects precision and prestige.
+      </p>
+      <p>
+        Today, we proudly serve customers across Europe and beyond, 
+        maintaining the highest standards in quality, authenticity, and service.
+      </p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d">
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="section section-light">
+  <h2>Our Mission & Vision</h2>
+  <p>
+    Our mission is to deliver an elevated luxury experience rooted in European heritage and modern innovation.
+    We envision a world where premium quality meets seamless digital excellence — 
+    creating trust, transparency, and timeless value.
+  </p>
+</section>
+
+<!-- VALUES -->
+<section class="section">
+  <h2>Core Values</h2>
+  <div class="values">
+    <div class="value-card">
+      <h3>Excellence</h3>
+      <p>We never compromise on quality. Every product is curated with precision.</p>
+    </div>
+    <div class="value-card">
+      <h3>Integrity</h3>
+      <p>Authenticity and transparency define every transaction.</p>
+    </div>
+    <div class="value-card">
+      <h3>Innovation</h3>
+      <p>We blend European tradition with modern digital sophistication.</p>
+    </div>
+    <div class="value-card">
+      <h3>Customer Commitment</h3>
+      <p>Luxury is not only in the product — it is in the experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section-light">
+  <h2>Leadership Team</h2>
+  <div class="team">
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg">
+      <h4>Alexander Laurent</h4>
+      <p>Chief Executive Officer</p>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+      <h4>Sophia Müller</h4>
+      <p>Head of Operations</p>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/75.jpg">
+      <h4>Daniel Rossi</h4>
+      <p>Creative Director</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Experience European Excellence</h2>
+  <p>Discover the finest curated luxury products.</p>
+  <button onclick="window.location.href='shop.html'">
+    Explore Our Collection
+  </button>
+</section>
+
+</body>
+</html>
